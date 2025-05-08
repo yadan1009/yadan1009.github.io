@@ -589,7 +589,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function deleteCustomMood(valueToDelete) {
         const options = loadMoodOptions();
         if (options.length <= 1) {
-            alert('心情是 Dairytale 故事的呼吸，请至少保留一种让它倾诉的方式。');
+            alert('心情是 Diarytale 故事的呼吸，请至少保留一种让它倾诉的方式。');
             return;
         }
         if (confirm(`确定要让 "${valueToDelete}" 这份心情从您的Diarytale中隐去吗？\n 过往篇章里那些借由它抒发的情感，将可能无法再被完整解读。`)) {
