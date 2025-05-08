@@ -1,0 +1,723 @@
+/* Global Resets and Base Styles */
+body {
+    font-family: 'Noto Sans SC', sans-serif;
+    background-color: #f9f5f2; /* Soft beige/warm gray background */
+    color: #4A4A4A; /* Dark gray text for readability */
+    margin: 0;
+    padding: 40px; /* Increased padding for more breathing room */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    line-height: 1.65; /* Improved line height for better readability */
+    -webkit-font-smoothing: antialiased; /* Smoother fonts on WebKit */
+    -moz-osx-font-smoothing: grayscale; /* Smoother fonts on Firefox */
+}
+
+.container {
+    background-color: #ffffff;
+    padding: 35px 45px; /* Adjusted padding */
+    border-radius: 12px; /* Modern rounded corners */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08); /* Softer, more modern shadow */
+    width: 100%;
+    max-width: 700px; /* Optimal reading width */
+}
+
+/* Header - Updated for minimalist and grand style */
+header {
+    text-align: center;
+    margin-bottom: 20px; /* Reduced margin as userArea will add its own */
+    padding-top: 20px;
+}
+
+header h1 {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 2.8em;
+    font-weight: 600;
+    color: #2c3e50;
+    margin: 0;
+    letter-spacing: 2px;
+    text-transform: uppercase; /* DAIRYTALE (如果不需要大写，可以移除这行) */
+    line-height: 1.3;
+}
+
+/* User Area Styles - For Username display/input */
+.user-area {
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 10px 0;
+    min-height: 30px; /* Prevent layout jump when content changes */
+    position: relative;
+}
+
+.user-greeting {
+    font-size: 1.1em;
+    color: #555;
+    font-weight: 500;
+    opacity: 0; /* Initial state for animation */
+    animation: fadeIn 0.9s ease-out forwards;
+    animation-delay: 0.3s;
+}
+
+.user-greeting .username {
+    font-weight: 600;
+    color: #E27D60; /* Accent color */
+}
+
+.user-input-container {
+    display: flex; /* For input and button alignment */
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    opacity: 0; /* Initial state for animation */
+    animation: fadeIn 0.8s ease-out forwards;
+    animation-delay: 0.2s;
+}
+
+#usernameInput {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 0.95em;
+    min-width: 200px;
+    text-align: center;
+}
+#usernameInput:focus {
+    border-color: #E27D60;
+    box-shadow: 0 0 0 2px rgba(226, 125, 96, 0.2);
+    outline: none;
+}
+
+/* Section Titles */
+.input-section h2,
+.entries-section h2,
+.trash-section h2,
+.achievements-section h2 {
+    color: #505050;
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-top: 20px;
+    margin-bottom: 25px;
+    font-size: 1.5em;
+    font-weight: 500;
+}
+.input-section h2#formTitle { /* Specific for the first title in input section */
+    margin-top: 0;
+}
+
+
+/* Form Elements */
+/* Textarea specific styles */
+textarea#journalText {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid #d8d8d8;
+    border-radius: 8px;
+    box-sizing: border-box;
+    margin-bottom: 25px;
+    font-size: 1em;
+    background-color: #fff;
+    line-height: 1.6;
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    min-height: 160px;
+    resize: vertical;
+}
+
+/* Mood Selector - Updated for alignment fix */
+.mood-selector {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+    gap: 8px;
+}
+
+.mood-selector label {
+    font-size: 1em;
+    color: #555;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+select#mood {
+    flex-grow: 1;
+    width: auto;
+    min-width: 150px;
+    padding: 14px 16px;
+    border: 1px solid #d8d8d8;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 1em;
+    background-color: #fff;
+    line-height: 1.6;
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+textarea#journalText:focus,
+select#mood:focus {
+    border-color: #E27D60;
+    box-shadow: 0 0 0 2px rgba(226, 125, 96, 0.2);
+    outline: none;
+}
+
+/* Buttons */
+button {
+    font-family: inherit;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+}
+
+button#submitBtn { /* Primary Button */
+    display: block;
+    width: 100%;
+    padding: 14px 22px;
+    background-color: #E27D60;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.05em;
+    font-weight: 500;
+    box-shadow: 0 2px 6px rgba(226, 125, 96, 0.25);
+}
+
+button#submitBtn:hover {
+    background-color: #DB6A4B;
+    transform: translateY(-1px);
+    box-shadow: 0 3px 8px rgba(226, 125, 96, 0.3);
+}
+
+button#submitBtn:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 4px rgba(226, 125, 96, 0.2);
+}
+
+.secondary-btn { /* General secondary button style */
+    padding: 10px 18px;
+    border: 1px solid #c5c5c5;
+    border-radius: 8px;
+    background-color: #f7f7f7;
+    color: #444;
+    font-size: 0.95em;
+    margin-left: 0; /* Base reset */
+}
+/* Ensure buttons inside specific containers reset left margin if using gap */
+.draft-actions .secondary-btn,
+.draft-actions .tertiary-btn,
+.image-upload-area .secondary-btn,
+.user-input-container .secondary-btn { /* For "记住我" button */
+    margin-left: 0;
+}
+
+
+.secondary-btn:hover {
+    background-color: #e9e9e9;
+    border-color: #b0b0b0;
+}
+
+.tertiary-btn {
+    background: none;
+    border: none;
+    color: #757575;
+    padding: 6px 8px;
+    font-size: 0.9em;
+    border-radius: 5px;
+}
+
+.tertiary-btn:hover {
+    color: #E27D60;
+    background-color: rgba(226, 125, 96, 0.08);
+}
+
+.danger-btn,
+.tertiary-btn.danger-btn {
+    color: #d9534f;
+    border-color: #d9534f; /* Only if .danger-btn is also a .secondary-btn style */
+}
+
+.danger-btn:hover,
+.tertiary-btn.danger-btn:hover {
+    color: #fff;
+    background-color: #c9302c;
+    border-color: #ac2925; /* Only if .danger-btn is also a .secondary-btn style */
+}
+
+
+/* Entries Section */
+.entries-section {
+    margin-top: 60px;
+}
+
+.entry {
+    background-color: #fff;
+    border: 1px solid #ebebeb;
+    padding: 20px 22px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    transition: box-shadow 0.25s ease-in-out;
+}
+
+.entry:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.07);
+    transform: none;
+}
+
+.entry-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.entry-date {
+    font-size: 0.8em;
+    color: #888;
+    font-weight: 400;
+}
+.entry-modified {
+    font-size: 0.9em; /* Relative to entry-date's 0.8em base */
+    color: #a0a0a0;
+}
+
+.entry-mood {
+    font-size: 1.2em;
+}
+
+.entry-text {
+    font-size: 0.95em;
+    line-height: 1.7;
+    color: #505050;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.no-entries, .no-entries-trash, .no-achievements {
+    text-align: center;
+    color: #888;
+    font-style: italic;
+    padding: 30px 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.entry-actions button, .trash-entry-actions button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1em;
+    padding: 8px;
+    margin-left: 5px;
+    color: #888;
+}
+
+/* Specific hover colors for action buttons to override general .tertiary-btn hover if needed */
+.entry-actions .edit-btn:hover { color: #5cb85c !important; }
+.entry-actions .delete-btn:hover { color: #d9534f !important; }
+.entry-actions .share-btn:hover { color: #007bff !important; }
+.trash-entry-actions .restore-btn:hover { color: #5bc0de !important; }
+.trash-entry-actions .permanently-delete-btn:hover { color: #757575 !important; }
+
+
+/* Image Upload & Preview */
+.image-upload-area {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #fdfdfd;
+    border: 1px dashed #d0d0d0;
+    border-radius: 8px;
+    text-align: center;
+}
+
+#triggerImageUploadBtn {
+    margin-bottom: 10px;
+}
+
+#imagePreviewContainer {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+#imagePreview {
+    max-width: 100%;
+    max-height: 220px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    object-fit: cover;
+}
+
+.entry-image-container {
+    margin-top: 12px;
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+.entry-image {
+    max-width: 100%;
+    max-height: 280px;
+    border-radius: 8px;
+    border: 1px solid #eee;
+    cursor: pointer;
+}
+
+.highlighted-entry {
+    background-color: #fff3cd !important;
+    border: 1px solid #ffeeba !important;
+    box-shadow: 0 0 10px rgba(255, 224, 130, 0.5) !important;
+}
+
+/* Trash Section */
+.trash-section {
+    margin-top: 60px;
+    padding-top: 20px;
+}
+.trash-section h2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.trash-header-buttons {
+    margin-left: auto;
+    display: flex;
+    gap: 10px;
+}
+#trashContainer {
+    margin-top: 15px;
+}
+#trashContainer .entry {
+    background-color: #f5f5f5;
+    border-left: 4px solid #bbb;
+}
+
+/* Achievements Section */
+.achievements-section {
+    margin-top: 60px;
+    padding-top: 20px;
+}
+
+.achievement-progress {
+    margin-bottom: 25px;
+    background-color: #fdfdfd;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #eee;
+}
+
+.progress-bar-text {
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.progress-bar-text span {
+    font-weight: 600;
+    color: #333;
+}
+
+.progress-bar-container {
+    width: 100%;
+    background-color: #e9e9e9;
+    border-radius: 10px;
+    height: 18px;
+    overflow: hidden;
+}
+
+.progress-bar-fill {
+    background-color: #A0C1D1;
+    height: 100%;
+    width: 0%;
+    border-radius: 10px;
+    transition: width 0.6s ease-in-out;
+    text-align: right;
+    line-height: 18px;
+    color: white;
+    font-size: 0.75em;
+}
+
+.unlocked-achievements-container {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 18px;
+}
+
+.achievement-item {
+    background-color: #eff7fa;
+    border: 1px solid #d6eaf0;
+    border-left: 4px solid #A0C1D1;
+    padding: 18px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.achievement-icon {
+    font-size: 1.6em;
+    margin-right: 15px;
+    color: #7ba0b0;
+}
+
+.achievement-details p {
+    margin: 0 0 3px 0;
+    font-size: 0.95em;
+    color: #444;
+    font-weight: 500;
+}
+
+.achievement-details span {
+    font-size: 0.75em;
+    color: #777;
+    display: block;
+}
+
+/* Draft Actions */
+.draft-actions {
+    margin-top: 25px;
+    padding-top:20px;
+    border-top: 1px dashed #e0e0e0;
+    display: flex;
+    flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+    align-items: center;
+    gap: 10px; /* Space between buttons and status text */
+}
+.draft-actions span#draftStatus { /* More specific selector */
+    flex-basis: 100%; /* Allow status to take full width on new line if needed */
+    margin-top: 5px; /* Add some space if it wraps */
+    text-align: left; /* Align status text to the left */
+    margin-left: 0; /* Reset margin-left if it was applied directly before */
+}
+
+
+/* Modal (Pop-up for Mood Editor) */
+.modal {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.55);
+    display: none; /* Toggled by JS, but ensure it's 'flex' when shown if you use flex for centering */
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: auto;
+    padding: 30px 35px;
+    border: none;
+    width: 100%;
+    max-width: 550px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    position: relative;
+}
+
+.close-modal-btn {
+    color: #aaa;
+    font-size: 26px;
+    font-weight: bold;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.close-modal-btn:hover,
+.close-modal-btn:focus {
+    color: #333;
+    text-decoration: none;
+}
+
+.modal-content h3 {
+    margin-top: 0;
+    margin-bottom: 25px;
+    color: #444;
+    font-size: 1.4em;
+    font-weight: 500;
+}
+
+.mood-editor-form h4, .mood-options-list-container h4 {
+    margin-top: 20px;
+    margin-bottom: 15px;
+    color: #555;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    font-size: 1.1em;
+    font-weight: 500;
+}
+
+.mood-editor-form .form-group {
+    margin-bottom: 18px;
+}
+
+.mood-editor-form label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 500;
+    font-size: 0.9em;
+    color: #555;
+}
+
+.mood-editor-form input[type="text"] {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 0.95em;
+}
+.mood-editor-form input[type="text"]:focus {
+    border-color: #E27D60;
+    box-shadow: 0 0 0 2px rgba(226, 125, 96, 0.2);
+    outline: none;
+}
+
+.mood-editor-form button {
+    margin-right: 10px;
+    padding:10px 18px;
+    font-size: 0.95em;
+    border-radius: 8px;
+}
+.mood-editor-form button:last-child {
+    margin-right: 0;
+}
+
+/* Apply specific styles for primary/secondary if not using global classes directly */
+#saveCustomMoodBtn {
+    background-color: #E27D60; /* Primary color */
+    color: white;
+    border: none;
+}
+#saveCustomMoodBtn:hover {
+    background-color: #DB6A4B;
+}
+#cancelCustomMoodEditBtn {
+    background-color: #f7f7f7; /* Secondary color */
+    color: #444;
+    border: 1px solid #c5c5c5;
+}
+#cancelCustomMoodEditBtn:hover {
+    background-color: #e9e9e9;
+}
+
+
+#currentMoodOptionsList {
+    list-style: none;
+    padding: 0;
+    max-height: 220px;
+    overflow-y: auto;
+    border: 1px solid #eee;
+    border-radius: 6px;
+}
+
+#currentMoodOptionsList li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 0.95em;
+}
+
+#currentMoodOptionsList li:last-child {
+    border-bottom: none;
+}
+
+#currentMoodOptionsList .mood-display {
+    color: #444;
+}
+
+#currentMoodOptionsList .mood-actions button {
+    margin-left: 8px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9em;
+    padding: 5px 7px;
+    border-radius: 4px;
+    color: #888;
+    transition: color 0.2s, background-color 0.2s; /* Smooth transition */
+}
+
+#currentMoodOptionsList .mood-actions .edit-mood-btn:hover { color: #5cb85c; background-color: rgba(92, 184, 92, 0.1); }
+#currentMoodOptionsList .mood-actions .delete-mood-btn:hover { color: #d9534f; background-color: rgba(217, 83, 79, 0.1); }
+
+
+#openMoodEditorBtn { /* Style for the button that opens the mood editor */
+    padding: 10px 18px;
+    font-size: 0.95em;
+    background-color: #6c757d; /* Neutral dark gray */
+    color: white;
+    border: none;
+    border-radius: 8px;
+}
+#openMoodEditorBtn:hover {
+    background-color: #5a6268;
+}
+
+
+/* Footer */
+footer {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-top: 60px;
+    border-top: 1px dashed #dcdcdc;
+    font-size: 0.85em;
+    color: #999;
+    box-sizing: border-box;
+}
+
+footer p {
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+footer p a {
+    color: #E27D60;
+    text-decoration: none;
+}
+
+footer p a:hover {
+    text-decoration: underline;
+    color: #DB6A4B;
+}
+
+/* FadeIn Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Utility class for visually hidden elements (if needed for accessibility) */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}

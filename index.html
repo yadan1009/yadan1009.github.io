@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DAIRYTALE</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&family=ZCOOL+XiaoWei&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>DAIRYTALE</h1> </header>
+
+        <div id="userArea" class="user-area">
+            <span id="userGreeting" class="user-greeting" style="display: none;"></span>
+            <div id="userInputContainer" class="user-input-container" style="display: none;">
+                <input type="text" id="usernameInput" placeholder="你好，初来乍到，如何称呼你？">
+                <button id="saveUsernameBtn" class="secondary-btn">是我</button>
+            </div>
+            </div>
+        <main>
+            <section class="input-section">
+                <h2><span id="formTitle">落笔处</span></h2>
+                <input type="hidden" id="editingEntryId">
+                <textarea id="journalText" placeholder="今天，你的 Dairytale 将如何续写？"></textarea>
+
+                <div class="mood-selector">
+                    <label for="mood">今日情绪值：</label>
+                    <select id="mood">
+                        </select>
+                </div>
+
+                <div class="image-upload-area">
+                    <button type="button" id="triggerImageUploadBtn" class="secondary-btn">🖼️ 添加照片</button>
+                    <input type="file" id="imageUpload" accept="image/*" style="display: none;">
+                    <div id="imagePreviewContainer" style="margin-top: 10px; display: none;">
+                        <img id="imagePreview" src="#" alt="图片预览" style="max-width: 200px; max-height: 200px; border-radius: 5px;"/>
+                        <button type="button" id="removeImageBtn" class="tertiary-btn" style="margin-left: 10px;">移除照片</button>
+                    </div>
+                </div>
+
+                <button id="submitBtn" style="margin-top: 20px;">✨ 珍藏此刻</button>
+                <button id="cancelEditBtn" class="secondary-btn" style="display: none; margin-top: 20px;">取消编辑</button>
+
+                <div class="draft-actions">
+                    <button id="saveDraftBtn" class="secondary-btn">💾 保存草稿</button>
+                    <button id="loadDraftBtn" class="secondary-btn" style="display: none;">📝 加载草稿</button>
+                    <button id="discardDraftBtn" class="tertiary-btn danger-btn" style="display: none;">🗑️ 丢弃草稿</button>
+                    <button id="openMoodEditorBtn" class="secondary-btn">⚙️ 自定义心情选项</button>
+                    <button id="editUsernameBtn" class="secondary-btn" style="display: none;" title="修改昵称">👤 修改昵称</button> <span id="draftStatus" style="font-size: 0.85em; color: #777;"></span>
+                </div>
+            </section>
+
+            <section class="entries-section">
+                <h2>历史记录</h2>
+                <div id="entriesContainer">
+                    <p class="no-entries">还没有记录哦，快来写下第一篇日记吧！</p>
+                </div>
+            </section>
+
+            <section class="trash-section">
+                <h2>回收站
+                    <span class="trash-header-buttons">
+                        <button id="toggleTrashBtn" class="tertiary-btn">显示</button> <button id="emptyTrashBtn" class="tertiary-btn danger-btn">清空回收站</button>
+                    </span>
+                </h2>
+                <div id="trashContainer" style="display: none;">
+                    <p class="no-entries-trash">回收站是空的。</p>
+                </div>
+            </section>
+
+            <section class="achievements-section">
+                <h2>🏆 我的成就</h2>
+                <div class="achievement-progress">
+                    <div class="progress-bar-text">
+                        下一个目标: <span id="nextMilestoneCountDisplay">10</span>篇日记 (<span id="currentProgressCount">0</span>/<span id="milestoneTargetCount">10</span>)
+                    </div>
+                    <div class="progress-bar-container">
+                        <div id="achievementProgressBarFill" class="progress-bar-fill"></div>
+                    </div>
+                </div>
+                <div id="unlockedAchievementsList" class="unlocked-achievements-container">
+                    <p class="no-achievements">还没有解锁任何成就，继续努力吧！</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div id="moodEditorModal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close-modal-btn" id="closeMoodEditorBtn" title="关闭">&times;</span>
+            <h3>自定义心情选项</h3>
+            <div class="mood-editor-form">
+                <h4>添加新心情 / 编辑选中项</h4>
+                <input type="hidden" id="editingMoodOriginalValue">
+                <div class="form-group">
+                    <label for="moodValueInput">值 (英文/拼音, 唯一且保存后不可改):</label>
+                    <input type="text" id="moodValueInput" placeholder="例如: happy, xingfen">
+                </div>
+                <div class="form-group">
+                    <label for="moodEmojiInput">Emoji 图标:</label>
+                    <input type="text" id="moodEmojiInput" placeholder="例如: 😊">
+                </div>
+                <div class="form-group">
+                    <label for="moodLabelInput">标签文本:</label>
+                    <input type="text" id="moodLabelInput" placeholder="例如: 开心">
+                </div>
+                <button id="saveCustomMoodBtn">保存心情</button> <button id="cancelCustomMoodEditBtn" style="display:none;">取消编辑</button> </div>
+            <div class="mood-options-list-container">
+                <h4>当前心情选项</h4>
+                <ul id="currentMoodOptionsList">
+                    <li>加载中...</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p><a href="mailto:zwan0569@student.monash.edu">联系作者：zwan0569@student.monash.edu</a></p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
