@@ -67,16 +67,16 @@ document.addEventListener('DOMContentLoaded', () => {
         "此刻，你的心情是哪一抹色彩？",
         "捕捉今日份心情...",
         "有什么特别的瞬间想要留住吗？",
-        "今天的 Dairytale 将留住什么？",
+        "今天的 Diarytale 将留住什么？",
         "捕捉今日份的小确幸或小思考...",
         "在此处，为你的 Dairytale 添上温暖的一笔。",
         "今天的天气怎么样？心情呢？",
         "有什么值得感恩的事情吗？",
-        "轻轻落笔，你的故事在 Dairytale 中闪耀。",
-        "欢迎来到 Dairytale，这里是你专属的故事发生地。不必寻找华丽的辞藻，只需用最真挚的文字，记录下属于你的独特篇章。让每一个平凡的日子，都成为值得回味的传说。",
-        "在 Dairytale 的世界里，每一份心情都值得被温柔述说，每一个瞬间都可以谱写成动人的故事。现在，就让你的思绪化为文字，开启今天的 Dairytale 旅程吧。",
+        "轻轻落笔，你的故事在 Diarytale 中闪耀。",
+        "欢迎来到 Diarytale，这里是你专属的故事发生地。不必寻找华丽的辞藻，只需用最真挚的文字，记录下属于你的独特篇章。让每一个平凡的日子，都成为值得回味的传说。",
+        "在 Diarytale 的世界里，每一份心情都值得被温柔述说，每一个瞬间都可以谱写成动人的故事。现在，就让你的思绪化为文字，开启今天的 Diarytale 旅程吧。",
         "此刻，你想对未来的自己说什么？",
-        "亲爱的故事家，你的 Dairytale 等待着新的章节。无论是生活的点滴感悟，还是不期而遇的小确幸，都将在这里汇聚成独一无二的温暖记忆。"
+        "亲爱的故事家，你的 Diarytale 等待着新的章节。无论是生活的点滴感悟，还是不期而遇的小确幸，都将在这里汇聚成独一无二的温暖记忆。"
     ];
 
 
@@ -267,7 +267,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function permanentlyDeleteEntry(id) {
-        if (!confirm('是否要让这篇日记向 Dairytale 道别，从此不再展现？')) return;
+        if (!confirm('是否要让这篇日记向 Diarytale 道别，从此不再展现？')) return;
         let trash = getStoredData(TRASH_KEY);
         trash = trash.filter(entry => entry.id !== id);
         saveStoredData(TRASH_KEY, trash);
@@ -592,7 +592,7 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('心情是 Dairytale 故事的呼吸，请至少保留一种让它倾诉的方式。');
             return;
         }
-        if (confirm(`确定要让 "${valueToDelete}" 这份心情从您的Dairytale中隐去吗？\n 过往篇章里那些借由它抒发的情感，将可能无法再被完整解读。`)) {
+        if (confirm(`确定要让 "${valueToDelete}" 这份心情从您的Diarytale中隐去吗？\n 过往篇章里那些借由它抒发的情感，将可能无法再被完整解读。`)) {
             const updatedOptions = options.filter(opt => opt.value !== valueToDelete);
             saveMoodOptions(updatedOptions);
             populateMoodDropdownAndBuildMap(); // Update main dropdown
@@ -655,7 +655,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (data.length === 0) {
             const noDataMsg = document.createElement('p');
             noDataMsg.classList.add(type === 'entries' ? 'no-entries' : 'no-entries-trash');
-            noDataMsg.textContent = type === 'entries' ? '此刻寂静无声，只因最美的故事尚未落笔。来 Dairytale，赋予今天独特的意义吧。' : '回收站里没有被遗忘的故事。';
+            noDataMsg.textContent = type === 'entries' ? '此刻寂静无声，只因最美的故事尚未落笔。来 Diarytale，赋予今天独特的意义吧。' : '回收站里没有被遗忘的故事。';
             container.appendChild(noDataMsg);
             return;
         }
