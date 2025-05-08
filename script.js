@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "有什么特别的瞬间想要留住吗？",
         "今天的 Diarytale 将留住什么？",
         "捕捉今日份的小确幸或小思考...",
-        "在此处，为你的 Dairytale 添上温暖的一笔。",
+        "在此处，为你的 Diarytale 添上温暖的一笔。",
         "今天的天气怎么样？心情呢？",
         "有什么值得感恩的事情吗？",
         "轻轻落笔，你的故事在 Diarytale 中闪耀。",
@@ -283,7 +283,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (confirm('清空回收站，这些昔日的篇章与心迹将永久封存，无法复原。是否继续？')) {
             saveStoredData(TRASH_KEY, []);
             renderTrash();
-            alert('旧忆已清，Dairytale 为你留出新的空间。');
+            alert('旧忆已清，Diarytale 为你留出新的空间。');
         }
     }
 
